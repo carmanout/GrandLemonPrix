@@ -1,0 +1,252 @@
+/* ============================================================
+   EL GRAND LEMONPRIX 🍋 — Estilos
+   ============================================================ */
+:root{
+  --limon:#FFD93B; --limon-fuerte:#FFC400; --lima:#B9E769;
+  --verde:#2F6B3C; --verde-osc:#1E4D2B; --tinta:#26301B;
+  --card:#FFFDF2; --borde:#EFE3AC; --rojo:#E4573D; --ok:#3E9B4F;
+  --panel-bg:#121A0D; --panel-card:#1D2913; --panel-borde:#38491F;
+  --panel-tinta:#F7F3D2; --panel-tenue:#B9C39A;
+  --sombra:0 6px 18px rgba(90,80,20,.12);
+  --radio:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--tinta);
+  background:linear-gradient(160deg,#FFF6C9 0%,#F4FFD6 55%,#E8F9B8 100%);
+  min-height:100vh;
+}
+h1,h2,h3,.display{font-family:"Baloo 2","Nunito",system-ui,sans-serif}
+button{font-family:inherit;cursor:pointer;border:none}
+input,select{font-family:inherit}
+img{max-width:100%}
+#app{max-width:760px;margin:0 auto;padding:14px 14px 110px}
+
+/* ---------- Cabecera ---------- */
+.cabecera{display:flex;align-items:center;gap:10px;padding:10px 4px 14px}
+.cabecera .logo-emoji{font-size:2.2rem;filter:drop-shadow(0 3px 4px rgba(0,0,0,.15))}
+.cabecera h1{font-size:1.55rem;line-height:1.05;font-weight:800;color:var(--verde-osc)}
+.cabecera h1 span{color:#C88A00}
+.cabecera .sub{font-size:.8rem;font-weight:700;color:#7a8a55}
+.cabecera .fase-pill{margin-left:auto;background:var(--verde);color:#fff;font-weight:800;
+  font-size:.72rem;padding:6px 12px;border-radius:999px;text-align:center;max-width:42%}
+
+/* ---------- Tarjetas y botones ---------- */
+.card{background:var(--card);border:2px solid var(--borde);border-radius:var(--radio);
+  padding:18px 16px;margin-bottom:14px;box-shadow:var(--sombra)}
+.card h2{font-size:1.25rem;color:var(--verde-osc);margin-bottom:8px}
+.card h3{font-size:1.05rem;color:var(--verde);margin-bottom:6px}
+.muted{color:#8a9168;font-size:.86rem;font-weight:700}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  background:linear-gradient(180deg,var(--limon),var(--limon-fuerte));color:#5c4300;
+  font-weight:900;font-size:1.05rem;padding:15px 18px;border-radius:16px;
+  box-shadow:0 4px 0 #d9a800,0 8px 16px rgba(160,120,0,.25);
+  transition:transform .06s ease,box-shadow .06s ease;margin-top:10px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #d9a800}
+.btn.sec{background:linear-gradient(180deg,#fff,#F4EED2);color:var(--verde-osc);
+  box-shadow:0 4px 0 #d8cf9f,0 8px 14px rgba(120,110,50,.18)}
+.btn.sec:active{box-shadow:0 1px 0 #d8cf9f}
+.btn.verde{background:linear-gradient(180deg,#5FBF74,#3E9B4F);color:#fff;
+  box-shadow:0 4px 0 #2c7a3b,0 8px 16px rgba(40,110,55,.3)}
+.btn.verde:active{box-shadow:0 1px 0 #2c7a3b}
+.btn.rojo{background:linear-gradient(180deg,#F27B63,#E4573D);color:#fff;
+  box-shadow:0 4px 0 #b83f2a,0 8px 16px rgba(180,60,40,.3)}
+.btn.rojo:active{box-shadow:0 1px 0 #b83f2a}
+.btn.mini{width:auto;padding:9px 14px;font-size:.85rem;margin-top:0;border-radius:12px}
+.btn:disabled{opacity:.45;filter:grayscale(.6);pointer-events:none}
+.btn-ghost{background:none;color:var(--verde);font-weight:800;font-size:.85rem;
+  padding:10px;text-decoration:underline;width:100%;margin-top:6px}
+.fila{display:flex;gap:10px}
+.fila>*{flex:1}
+
+/* ---------- Banner modo local ---------- */
+.banner-local{background:#FFF3D6;border:2px dashed #E0B93F;color:#8a6a10;
+  border-radius:14px;padding:10px 14px;font-size:.8rem;font-weight:800;margin-bottom:12px}
+
+/* ---------- Formularios ---------- */
+label.campo{display:block;margin-bottom:10px;font-weight:800;font-size:.82rem;color:var(--verde-osc)}
+input[type=text],input[type=number],input[type=url],input.notas{
+  width:100%;padding:12px 14px;border:2px solid var(--borde);border-radius:12px;
+  font-size:1rem;font-weight:700;background:#fff;margin-top:4px}
+input:focus{outline:none;border-color:var(--limon-fuerte)}
+.equipo-form{border:2px solid var(--borde);border-radius:14px;padding:12px;margin-bottom:10px;background:#fff}
+.equipo-form .tit{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.equipo-form .tit b{color:var(--verde-osc)}
+.equipo-form .del{background:#FDE8E3;color:var(--rojo);border-radius:10px;font-weight:900;padding:6px 10px}
+
+/* ---------- Temporizador ---------- */
+.timerbar{height:16px;background:#eee9c9;border-radius:999px;overflow:hidden;margin:8px 0 4px;border:2px solid var(--borde)}
+.timerbar i{display:block;height:100%;width:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--lima),var(--limon));transition:width .15s linear}
+.timerbar i.bajo{background:linear-gradient(90deg,#F27B63,var(--rojo))}
+.timer-big{font-family:"Baloo 2";font-size:3rem;font-weight:800;color:var(--verde-osc);text-align:center;line-height:1}
+
+/* ---------- Ronda 1 ---------- */
+.contadores{display:flex;justify-content:center;gap:26px;margin:6px 0 10px}
+.contadores .c-ok,.contadores .c-ko{font-family:"Baloo 2";font-size:1.7rem;font-weight:800}
+.contadores .c-ok{color:var(--ok)} .contadores .c-ko{color:var(--rojo)}
+.pregunta-card{background:#fff;border:3px solid var(--verde);border-radius:20px;padding:22px 18px;
+  text-align:center;box-shadow:var(--sombra)}
+.pregunta-card .pregunta{font-size:1.35rem;font-weight:900;color:var(--tinta);line-height:1.35}
+.pregunta-card .respuesta{margin-top:14px;display:inline-block;background:#EAF7DF;border:2px dashed var(--ok);
+  color:var(--verde-osc);font-weight:900;font-size:1.15rem;padding:10px 18px;border-radius:14px}
+.botones-juicio{display:flex;gap:14px;margin-top:16px}
+.btn-juicio{flex:1;border-radius:22px;padding:22px 10px;font-size:2.1rem;color:#fff;font-weight:900;
+  display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .05s}
+.btn-juicio small{font-size:.95rem;font-weight:900;letter-spacing:.5px}
+.btn-juicio.ok{background:linear-gradient(180deg,#5FBF74,#3E9B4F);box-shadow:0 5px 0 #2c7a3b}
+.btn-juicio.ko{background:linear-gradient(180deg,#F27B63,#E4573D);box-shadow:0 5px 0 #b83f2a}
+.btn-juicio:active{transform:scale(.96)}
+
+/* ---------- Listas de equipos ---------- */
+.equipo-item{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--borde);
+  border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.equipo-item .info{flex:1;min-width:0}
+.equipo-item .nombre{font-weight:900;color:var(--verde-osc);font-size:1.02rem}
+.equipo-item .jugs{font-size:.8rem;color:#8a9168;font-weight:700}
+.equipo-item .pts{font-family:"Baloo 2";font-weight:800;font-size:1.3rem;color:#C88A00;white-space:nowrap}
+.equipo-item.hecho{border-color:var(--ok);background:#F2FAEA}
+.chip{display:inline-block;background:#EAF7DF;color:var(--verde-osc);border-radius:999px;
+  padding:4px 12px;font-size:.75rem;font-weight:900}
+
+/* ---------- Cifras y letras ---------- */
+.fichas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:12px 0}
+.ficha{background:#fff;border:3px solid var(--verde);border-radius:12px;min-width:56px;
+  padding:12px 10px;text-align:center;font-family:"Baloo 2";font-size:1.7rem;font-weight:800;color:var(--verde-osc)}
+.ficha.letra{border-color:#C88A00;color:#8a5c00}
+.objetivo{text-align:center;font-family:"Baloo 2";font-size:3rem;font-weight:800;color:#C0392B;line-height:1.1}
+.solucion{background:#FDF6DC;border:2px solid #E0B93F;border-radius:14px;padding:12px 14px;
+  font-weight:900;color:#7a5c00;margin-top:10px;text-align:center}
+.pick{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--borde);
+  border-radius:14px;padding:14px;font-weight:900;font-size:1.05rem;margin-bottom:8px}
+.pick input{width:24px;height:24px;accent-color:var(--ok)}
+
+/* ---------- Precio exacto ---------- */
+.producto{text-align:center;padding:10px}
+.producto .emoji{font-size:5.2rem;line-height:1.2;filter:drop-shadow(0 6px 8px rgba(0,0,0,.18))}
+.producto img{max-height:220px;border-radius:16px;box-shadow:var(--sombra)}
+.producto .nombre{font-family:"Baloo 2";font-size:1.5rem;font-weight:800;color:var(--verde-osc);margin-top:8px}
+.producto .precio-real{display:inline-block;margin-top:10px;background:#EAF7DF;border:2px dashed var(--ok);
+  border-radius:12px;padding:8px 16px;font-weight:900;color:var(--verde-osc)}
+.tabla{width:100%;border-collapse:collapse;margin-top:10px;font-size:.92rem}
+.tabla th{background:var(--verde);color:#fff;padding:9px 8px;text-align:left;font-size:.78rem}
+.tabla td{padding:9px 8px;border-bottom:2px solid #F1ECD2;font-weight:700}
+.tabla tr:first-child td{padding-top:12px}
+.tabla .pts{font-weight:900;color:#C88A00}
+
+/* ---------- Conexión / Duelo ---------- */
+.pregunta-conexion{background:linear-gradient(160deg,#fff,#FFF8DC);border:3px solid var(--limon-fuerte);
+  border-radius:20px;padding:26px 18px;text-align:center;font-family:"Baloo 2";font-size:1.45rem;
+  font-weight:800;color:#7a5c00;box-shadow:var(--sombra)}
+.notas-hint{background:#EAF7DF;border-radius:12px;padding:10px 14px;font-size:.85rem;font-weight:800;
+  color:var(--verde-osc);margin-top:12px;text-align:center}
+.categorias{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cat-btn{background:#fff;border:2px solid var(--borde);border-radius:14px;padding:16px 8px;
+  font-weight:900;font-size:.95rem;color:var(--verde-osc)}
+.cat-btn:active{background:#EAF7DF}
+.vs{display:flex;gap:10px;margin-bottom:12px}
+.vs .jugador{flex:1;background:#fff;border:3px solid var(--borde);border-radius:16px;padding:14px 10px;text-align:center}
+.vs .jugador.turno{border-color:var(--limon-fuerte);background:#FFF8DC;box-shadow:0 0 0 4px rgba(255,196,0,.25)}
+.vs .jugador b{display:block;color:var(--verde-osc);font-size:1.05rem}
+.vs .fallos{font-size:1.3rem;letter-spacing:2px;margin-top:6px}
+
+/* ---------- Marcador / podio ---------- */
+.medalla{font-size:1.25rem;width:34px;text-align:center}
+.resumen-ronda{font-size:.85rem;font-weight:800;color:#7a8a55;margin-bottom:6px}
+.podio-movil{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:18px 0}
+.podio-movil .cajon{background:#fff;border:3px solid var(--borde);border-radius:16px 16px 0 0;
+  width:30%;text-align:center;padding:12px 6px;font-weight:900}
+.podio-movil .cajon .emoji{font-size:2rem}
+.podio-movil .c1{border-color:var(--limon-fuerte);min-height:150px;background:linear-gradient(180deg,#FFF3C4,#fff)}
+.podio-movil .c2{min-height:115px}
+.podio-movil .c3{min-height:90px}
+
+/* ---------- Navegación inferior ---------- */
+.nav-movil{position:fixed;left:0;right:0;bottom:0;background:#fffdf2f2;backdrop-filter:blur(8px);
+  border-top:2px solid var(--borde);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+.nav-movil button{flex:1;background:none;padding:12px 4px 10px;font-weight:900;font-size:.72rem;
+  color:#9aa06b;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav-movil button .ic{font-size:1.35rem}
+.nav-movil button.activo{color:var(--verde-osc)}
+.nav-movil button.activo .ic{transform:scale(1.15)}
+.cambiar-vista{display:block;text-align:center;color:#9aa06b;font-weight:800;font-size:.75rem;
+  padding:10px;text-decoration:underline;background:none;width:100%}
+
+/* ---------- Toast ---------- */
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);
+  background:var(--verde-osc);color:#fff;font-weight:800;padding:12px 20px;border-radius:999px;
+  opacity:0;pointer-events:none;transition:all .25s ease;z-index:99;max-width:88vw;text-align:center;font-size:.9rem}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============================================================
+   VISTA PANEL (PC / gran pantalla) — tema oscuro
+   ============================================================ */
+body.panel{background:radial-gradient(1200px 600px at 50% -10%,#2A3A14 0%,var(--panel-bg) 55%);
+  color:var(--panel-tinta);overflow-x:hidden}
+body.panel #app{max-width:1400px;padding:22px 28px 20px}
+.panel-wrap{display:flex;flex-direction:column;min-height:calc(100vh - 44px)}
+.panel-header{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.panel-header .logo{font-family:"Baloo 2";font-weight:800;font-size:clamp(1.6rem,3.2vw,2.6rem);color:var(--limon)}
+.panel-header .logo span{color:var(--lima)}
+.panel-header .fase-tag{margin-left:auto;background:var(--panel-card);border:2px solid var(--panel-borde);
+  color:var(--limon);font-weight:900;font-size:clamp(.85rem,1.4vw,1.1rem);padding:10px 22px;border-radius:999px}
+.panel-main{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;flex:1;margin-top:16px}
+@media (max-width:900px){.panel-main{grid-template-columns:1fr}}
+.panel-escenario{background:var(--panel-card);border:2px solid var(--panel-borde);border-radius:26px;
+  padding:clamp(18px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;min-height:55vh}
+.panel-marcador{background:var(--panel-card);border:2px solid var(--panel-borde);border-radius:26px;padding:22px}
+.panel-marcador h2{color:var(--limon);font-size:clamp(1.1rem,1.8vw,1.5rem);margin-bottom:12px;text-align:center}
+.fila-marca{display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:14px;margin-bottom:8px;
+  background:rgba(255,255,255,.04)}
+.fila-marca.lider{background:rgba(255,217,59,.14);border:1px solid rgba(255,217,59,.4)}
+.fila-marca .pos{font-family:"Baloo 2";font-size:clamp(1.2rem,2vw,1.7rem);width:40px;text-align:center}
+.fila-marca .eq{flex:1;min-width:0}
+.fila-marca .eq b{display:block;font-size:clamp(.95rem,1.5vw,1.2rem);color:var(--panel-tinta);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila-marca .eq small{color:var(--panel-tenue);font-weight:700;font-size:.75rem}
+.fila-marca .pts{font-family:"Baloo 2";font-weight:800;font-size:clamp(1.3rem,2.2vw,1.9rem);color:var(--limon)}
+.panel-footer{margin-top:16px;text-align:center;color:var(--panel-tenue);font-weight:800;
+  font-size:clamp(.8rem,1.2vw,1rem);padding:12px;border-top:1px solid var(--panel-borde)}
+.esc-titulo{font-family:"Baloo 2";font-size:clamp(1.4rem,3vw,2.4rem);color:var(--limon);margin-bottom:8px}
+.esc-sub{color:var(--panel-tenue);font-weight:800;font-size:clamp(.9rem,1.5vw,1.15rem)}
+.esc-emoji{font-size:clamp(4rem,10vw,9rem);line-height:1.2;filter:drop-shadow(0 10px 16px rgba(0,0,0,.4))}
+.esc-nombre{font-family:"Baloo 2";font-size:clamp(1.6rem,3.4vw,2.8rem);color:#fff;margin-top:8px}
+.cuenta-atras{font-family:"Baloo 2";font-weight:800;font-size:clamp(4rem,12vw,10rem);color:var(--limon);line-height:1}
+.cuenta-atras.bajo{color:var(--rojo)}
+.timerbar-panel{width:min(560px,80%);height:18px;background:#0d1207;border-radius:999px;overflow:hidden;margin-top:14px;border:2px solid var(--panel-borde)}
+.timerbar-panel i{display:block;height:100%;background:linear-gradient(90deg,var(--lima),var(--limon))}
+.timerbar-panel i.bajo{background:var(--rojo)}
+.fichas-panel{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0}
+.ficha-p{background:#0d1207;border:3px solid var(--lima);color:var(--lima);border-radius:16px;min-width:80px;
+  padding:18px 14px;font-family:"Baloo 2";font-weight:800;font-size:clamp(2rem,4vw,3.2rem)}
+.ficha-p.letra{border-color:var(--limon);color:var(--limon)}
+.objetivo-p{font-family:"Baloo 2";font-weight:800;font-size:clamp(3rem,8vw,6rem);color:#fff}
+.solucion-p{background:rgba(255,217,59,.12);border:2px dashed var(--limon);border-radius:16px;
+  padding:14px 22px;font-weight:900;color:var(--limon);font-size:clamp(1rem,2vw,1.5rem);margin-top:14px}
+.tabla-p{width:100%;max-width:640px;border-collapse:collapse;margin-top:14px;font-size:clamp(.85rem,1.5vw,1.15rem)}
+.tabla-p th{color:var(--panel-tenue);text-align:left;padding:8px;font-size:.8em;text-transform:uppercase;letter-spacing:1px}
+.tabla-p td{padding:10px 8px;border-bottom:1px solid var(--panel-borde);font-weight:800;color:var(--panel-tinta)}
+.tabla-p .pts{color:var(--limon)}
+.pregunta-p{font-family:"Baloo 2";font-weight:800;font-size:clamp(1.3rem,2.8vw,2.3rem);color:#fff;
+  max-width:820px;line-height:1.35}
+.vs-p{display:flex;gap:20px;width:100%;max-width:720px;margin-top:14px}
+.vs-p .jugador-p{flex:1;background:#0d1207;border:3px solid var(--panel-borde);border-radius:20px;padding:18px 10px}
+.vs-p .jugador-p.turno{border-color:var(--limon);box-shadow:0 0 30px rgba(255,217,59,.25)}
+.vs-p b{display:block;font-family:"Baloo 2";font-size:clamp(1.2rem,2.4vw,2rem);color:#fff}
+.vs-p .fallos{font-size:clamp(1.4rem,3vw,2.2rem);margin-top:8px;letter-spacing:4px}
+.podio-p{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-top:20px;width:100%;max-width:720px}
+.podio-p .cajon{background:#0d1207;border:3px solid var(--panel-borde);border-radius:20px 20px 0 0;
+  flex:1;padding:18px 8px;font-weight:900}
+.podio-p .emoji{font-size:clamp(2rem,4vw,3.4rem)}
+.podio-p .eqn{font-family:"Baloo 2";font-size:clamp(1rem,1.8vw,1.5rem);color:#fff;margin-top:6px}
+.podio-p .pts{color:var(--limon);font-family:"Baloo 2";font-size:clamp(1.2rem,2.4vw,2rem)}
+.podio-p .c1{border-color:var(--limon);min-height:230px;background:linear-gradient(180deg,rgba(255,217,59,.18),#0d1207)}
+.podio-p .c2{min-height:175px}.podio-p .c3{min-height:135px}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:60}
+.confetti span{position:absolute;top:-8%;font-size:1.8rem;animation:caer linear infinite}
+@keyframes caer{to{transform:translateY(115vh) rotate(540deg)}}
+.sync-aviso{margin-top:10px;background:rgba(228,87,61,.15);border:1px solid var(--rojo);color:#F5B9AC;
+  border-radius:12px;padding:8px 16px;font-weight:800;font-size:.85rem}
