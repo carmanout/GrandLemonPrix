@@ -69,7 +69,13 @@ const equiposOrdenados = () => [...S.equipos].sort((a, b) => b.puntos - a.puntos
 
 /* ---------------- Sincronización con Google Sheets (Apps Script) ---------------- */
 const GASKEY = 'lemonprix_gas_url';
-const gasUrl = () => localStorage.getItem(GASKEY) || '';
+const GAS_URL_DEFAULT = 'https://script.google.com/macros/s/AKfycbxY7omtcBVZbJT271WWnUsZOZuMe10mHRver775MhzCvihWwDIw99nRCG5dmhnGOamc/exec';
+const gasUrl = () => {
+  const stored = localStorage.getItem(GASKEY);
+  if (stored) return stored;
+  try { localStorage.setItem(GASKEY, GAS_URL_DEFAULT); } catch (e) {}
+  return GAS_URL_DEFAULT;
+};
 let pushTimer = null;
 function push(evento, inmediato) {
   S.rev++; S.updatedAt = Date.now(); if (evento) S.ultimoEvento = evento;
