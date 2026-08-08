@@ -539,7 +539,7 @@ function screenAjustes() {
     <p class="muted">Pega aquí la <b>URL de la aplicación web</b> de tu Apps Script
     (ver instrucciones en el README). Sin ella, la app funciona en modo local.</p>
     <label class="campo">URL del script
-      <input type="url" id="gas-url" value="${esc(gasUrl())}" placeholder="https://script.google.com/macros/s/…/exec"></label>
+      <input type="url" id="gas-url" value="${esc(gasUrl())}" placeholder="https://script.google.com/macros/s/AKfycbxY7omtcBVZbJT271WWnUsZOZuMe10mHRver775MhzCvihWwDIw99nRCG5dmhnGOamc/exec"></label>
     <div class="fila">
       <button type="button" class="btn verde" data-act="aj-guardar-url">💾 Guardar URL</button>
       <button type="button" class="btn sec" data-act="aj-probar">📡 Probar conexión</button>
