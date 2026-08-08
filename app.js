@@ -52,7 +52,7 @@ function defaultState() {
     equipos: [],                                   // {nombre, j1, j2, puntos}
     r1: { idx: null, resultados: {}, usadas: [] },
     r2: { sub: 0, tipos: ['cifras', 'letras', 'cifras', 'letras'], actual: null, estado: 'pre', resultados: [] },
-    r3: { producto: null, filas: null, resuelto: false, usadas: [], total: 3 },
+    r3: { producto: null, filas: null, resuelto: false },
     r4: { idx: 0, sub: 0, usadas: [], resultados: {}, actual: null },
     ganadorIdx: null, empateIdxs: null,
     r5: { fallos: { A: 0, B: 0 }, turno: 'A', categoria: null, pregunta: null, usadas: [], ganador: null },
@@ -372,30 +372,20 @@ function bloqueRetoR2() {
   return `<div class="fichas">${a.letras.map(l => `<span class="ficha letra">${l}</span>`).join('')}</div>`;
 }
 function r2FinTimer() { S.r2.estado = 'puntuar'; S.timer = null; push('', true); render(); toast('¡Tiempo!'); }
-function elegirProductoR3() {
-  const usados = S.r3.usadas;
-  const disponibles = BANCO_PRECIOS.map((_, k) => k).filter(k => !usados.includes(k));
-  if (!disponibles.length) return null;
-  const k = disponibles[Math.floor(Math.random() * disponibles.length)];
-  S.r3.usadas.push(k);
-  return BANCO_PRECIOS[k];
-}
 
 /* ---------- RONDA 3 · EL PRECIO EXACTO ---------- */
 function screenR3() {
   const R = S.r3;
-  const rondaActual = Math.min(R.usadas.length + (R.producto ? 1 : 0), R.total);
   if (!R.producto) {
     return `<div class="card"><h2>💰 Ronda 3 · El Precio Exacto</h2>
-      <p class="muted">Se enseñan <b>3 productos</b> distintos y cada pareja dice cuánto cree que cuesta.
+      <p class="muted">Se enseña un producto y cada pareja dice cuánto cree que cuesta.
       Cuanto más cerca queden, más puntos: ${S.config.ptsR3.join(' / ')}… (los empates puntúan igual).</p>
-      <button type="button" class="btn" data-act="r3-elegir">🎁 Empezar la ronda 1/3</button></div>`;
+      <button type="button" class="btn" data-act="r3-elegir">🎁 Elegir producto al azar</button></div>`;
   }
   const p = R.producto;
   const cardP = `<div class="card producto">
       ${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.nombre)}">` : `<div class="emoji">${p.emoji}</div>`}
       <div class="nombre">${esc(p.nombre)}</div>
-      <div class="resumen-ronda">Producto ${Math.min(R.usadas.length, R.total)}/${R.total}</div>
       ${R.resuelto ? `<div class="precio-real">💰 Precio real: ${eur(p.precio)}</div>`
                    : `<div class="precio-real">🤫 Precio real: ${eur(p.precio)} (no lo digas)</div>`}
     </div>`;
@@ -404,12 +394,9 @@ function screenR3() {
       <td>${f.rank === 1 ? '🥇' : f.rank === 2 ? '🥈' : f.rank === 3 ? '🥉' : f.rank + 'º'}</td>
       <td>${esc(S.equipos[f.i].nombre)}</td><td>${eur(f.est)}</td><td>${eur(f.dist)}</td>
       <td class="pts">+${fmtPts(f.pts)}</td></tr>`).join('');
-    const siguiente = R.usadas.length >= R.total
-      ? `<button type="button" class="btn verde" data-act="ir-r4">Continuar a la Ronda 4 ➜</button>`
-      : `<button type="button" class="btn verde" data-act="r3-elegir">Siguiente producto ➜</button>`;
     return `${cardP}<div class="card"><h3>Resultados</h3>
       <table class="tabla"><tr><th></th><th>Equipo</th><th>Dijo</th><th>Diferencia</th><th>Pts</th></tr>${filas}</table>
-      ${siguiente}</div>`;
+      <button type="button" class="btn verde" data-act="ir-r4">Continuar a la Ronda 4 ➜</button></div>`;
   }
   const inputs = S.equipos.map((e, i) => `
     <label class="campo">${esc(e.nombre)}
@@ -667,20 +654,9 @@ const ACTIONS = {
 
   /* ----- ronda 3 ----- */
   'r3-elegir': () => {
-    if (S.r3.usadas.length >= S.r3.total) {
-      S.fase = 'r4';
-      push('💞 Comienza Conexión Perfecta', true); render();
-      return;
-    }
-    const producto = elegirProductoR3();
-    if (!producto) {
-      S.fase = 'r4';
-      push('💞 Comienza Conexión Perfecta', true); render();
-      return;
-    }
-    S.r3.producto = producto;
+    S.r3.producto = BANCO_PRECIOS[Math.floor(Math.random() * BANCO_PRECIOS.length)];
     S.r3.resuelto = false; S.r3.filas = null;
-    push(`💰 El Precio Exacto: producto ${S.r3.usadas.length}/${S.r3.total} · ¿cuánto cuesta?`, true); render();
+    push('💰 El Precio Exacto: ¿cuánto cuesta este producto?', true); render();
   },
   'r3-calcular': () => {
     const est = S.equipos.map((_, i) => parseEuro($('#est-' + i)?.value));
@@ -852,10 +828,9 @@ function renderPanel() {
     }
     case 'r3': {
       const p = S.r3.producto;
-      const ronda = Math.min(S.r3.usadas.length || 0, S.r3.total);
       if (!p) {
         escenario = `<div class="esc-emoji">💰</div><div class="esc-titulo">El Precio Exacto</div>
-          <div class="esc-sub">Eligiendo producto ${ronda + 1} de ${S.r3.total}…</div>`;
+          <div class="esc-sub">Eligiendo producto…</div>`;
       } else {
         const filas = S.r3.resuelto ? S.r3.filas.map(f => `<tr>
           <td>${f.rank === 1 ? '🥇' : f.rank === 2 ? '🥈' : f.rank === 3 ? '🥉' : f.rank + 'º'}</td>
@@ -864,7 +839,6 @@ function renderPanel() {
         escenario = `${p.img ? `<img src="${esc(p.img)}" alt="" style="max-height:34vh;border-radius:18px">`
                             : `<div class="esc-emoji">${p.emoji}</div>`}
           <div class="esc-nombre">${esc(p.nombre)}</div>
-          <div class="esc-sub">Producto ${Math.min(S.r3.usadas.length, S.r3.total)}/${S.r3.total}</div>
           ${S.r3.resuelto
             ? `<div class="solucion-p">💰 Precio real: ${eur(p.precio)}</div>
                <table class="tabla-p"><tr><th></th><th>Equipo</th><th>Dijo</th><th>Diferencia</th><th>Pts</th></tr>${filas}</table>`
